@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ - Edirom Source Manager
+ - Copyright Benjamin W. Bohl 2014.
+ - bohl(at)edirom.de
+ -
+ - http://www.github.com/edirom/ediromSourceManager
+ - 
+ - ## Description & License
+ - 
+ - This file defines the index page of Edirom Source Manager.
+ - This program is free software: you can redistribute it and/or modify
+ - it under the terms of the GNU General Public License as published by
+ - the Free Software Foundation, either version 3 of the License, or
+ - (at your option) any later version.
+ -
+ - This program is distributed in the hope that it will be useful,
+ - but WITHOUT ANY WARRANTY; without even the implied warranty of
+ - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ - GNU General Public License for more details.
+ -
+ - You should have received a copy of the GNU General Public License
+ - along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>file list</h3>
+            <div class="table-responsive">
+                <table class="table table-hover" id="ediromFileList">
+                    <thead>
+                        <tr id="thead">
+                            <th>name</th>
+                            <th>created</th>
+                            <th>controls</th>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <button type="button" id="newItem" class="btn btn-default pull-right">add <span class="glyphicon glyphicon-plus"/>
+                                </button>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+						<!-- to be filled by ajax request from index.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6" id="addItemDetails" style="display:none;">
+            <h3>add item <small>details</small>
+            </h3>
+            <form role="form" id="form_createSource">
+                <div class="form-group">
+                    <label for="input_filename">filename/ID</label>
+                    <input type="text" name="filename" class="form-control" id="input_filename" placeholder="filename"/>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span data-bind="label">select...</span>
+                                <span class="caret"/>
+                            </button>
+                            <input type="text" name="fileResp" style="display:none;" data-bind="form" class="form-control"/>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">arranger</a>
+                                </li>
+                                <li>
+                                    <a href="#">author</a>
+                                </li>
+                                <li>
+                                    <a href="#">composer</a>
+                                </li>
+                                <li>
+                                    <a href="#">editor</a>
+                                </li>
+                                <li>
+                                    <a href="#">funder</a>
+                                </li>
+                                <li>
+                                    <a href="#">librettist</a>
+                                </li>
+                                <li>
+                                    <a href="#">lyricist</a>
+                                </li>
+                                <li>
+                                    <a href="#">sponsor</a>
+                                </li>
+                            </ul>
+                        </div><!-- /btn-group -->
+                        <input type="text" name="fileResp_v" class="form-control" id="input_fileResp" placeholder="file responsibility"/>
+                    </div><!-- /input-group -->
+                </div>
+                <div class="form-group">
+                    <label for="input_sourceTitle">source title</label>
+                    <input type="text" name="sourceTitle" class="form-control" id="input_sourceTitle" placeholder="source title"/>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-btn bootstrap-select">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="filter-option" data-bind="label">select...</span>
+                                <span class="caret"/>
+                            </button>
+                            <input type="text" name="sourceResp" id="sourceResp" style="display:none;" data-bind="form" class="form-control"/>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">arranger</a>
+                                </li>
+                                <li>
+                                    <a href="#">author</a>
+                                </li>
+                                <li>
+                                    <a href="#">composer</a>
+                                </li>
+                                <li>
+                                    <a href="#">editor</a>
+                                </li>
+                                <li>
+                                    <a href="#">funder</a>
+                                </li>
+                                <li>
+                                    <a href="#">librettist</a>
+                                </li>
+                                <li>
+                                    <a href="#">lyricist</a>
+                                </li>
+                                <li>
+                                    <a href="#">sponsor</a>
+                                </li>
+                            </ul>
+                        </div><!-- /btn-group -->
+                        <input type="text" name="sourceResp_v" class="form-control" id="input_sourceResp" placeholder="source responsibility"/>
+                    </div><!-- /input-group -->
+                </div>
+            	<!-- TODO: allow file upload -->
+                <!--<div class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <input type="file" id="exampleInputFile"/>
+                    <p class="help-block">Example block-level help text here.</p>
+                </div>-->
+                <div class="btn-grp pull-right">
+                    <button type="reset" id="reset" class="btn btn-default">cancel<span class="glyphicon glyphicon-remove"/>
+                    </button>
+                    <button type="submit" id="submit" class="btn btn-default">confirm<span class="glyphicon glyphicon-ok"/>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

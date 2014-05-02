@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ - Edirom Source Manager
+ - Copyright Benjamin W. Bohl 2014.
+ - bohl(at)edirom.de
+ -
+ - http://www.github.com/edirom/ediromSourceManager
+ - 
+ - ## Description & License
+ - 
+ - This file is the template file for creating MEI files with Edirom Source Manager.
+ - This program is free software: you can redistribute it and/or modify
+ - it under the terms of the GNU General Public License as published by
+ - the Free Software Foundation, either version 3 of the License, or
+ - (at your option) any later version.
+ -
+ - This program is distributed in the hope that it will be useful,
+ - but WITHOUT ANY WARRANTY; without even the implied warranty of
+ - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ - GNU General Public License for more details.
+ -
+ - You should have received a copy of the GNU General Public License
+ - along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="2013" meiversion.num="2.1.0">
+    <meiHead>
+        <fileDesc>
+            <titleStmt>
+                <title>supplied_fileName</title>
+            </titleStmt>
+            <pubStmt>
+                <unpub/>
+            </pubStmt>
+            <sourceDesc>
+                <source>
+                    <titleStmt>
+                        <title>supplied_sourceTitle</title>
+                    </titleStmt>
+                </source>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <appInfo xml:id="dummy"/>
+        </encodingDesc>
+        <revisionDesc>
+            <change n="1">
+                <respStmt>
+                    <persName xml:id="bwb">Benjamin W. Bohl</persName>
+                </respStmt>
+                <changeDesc>
+                    <p>Created newSource.xml MEI template file for Edirom Source Manager.</p>
+                </changeDesc>
+                <date isodate="2014-05-01"/>
+            </change>
+        </revisionDesc>
+    </meiHead>
+    <music>
+        <facsimile>
+            <!-- to be filled by other means -->
+        </facsimile>
+        <body>
+            <mdiv>
+                <!-- to be filled -->
+            </mdiv>
+        </body>
+    </music>
+</mei>

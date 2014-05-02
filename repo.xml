@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ - Edirom Source Manager
+ - Copyright Benjamin W. Bohl 2014.
+ - bohl(at)edirom.de
+ -
+ - http://www.github.com/edirom/ediromSourceManager
+ - 
+ - ## Description & License
+ - 
+ - This file returns the defined collection as JSON
+ - This program is free software: you can redistribute it and/or modify
+ - it under the terms of the GNU General Public License as published by
+ - the Free Software Foundation, either version 3 of the License, or
+ - (at your option) any later version.
+ -
+ - This program is distributed in the hope that it will be useful,
+ - but WITHOUT ANY WARRANTY; without even the implied warranty of
+ - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ - GNU General Public License for more details.
+ -
+ - You should have received a copy of the GNU General Public License
+ - along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<meta xmlns="http://exist-db.org/xquery/repo">
+    <description>Application for creting MEI source-files in eXist-db.</description>
+    <author>Benjamin W. Bohl</author>
+    <website>http://www.edirom.de</website>
+    <status>alpha</status>
+    <license>GNU GPL-3</license>
+    <copyright>true</copyright>
+    <type>application</type>
+    <target>ediromSourceManager</target>
+    <prepare>pre-install.xql</prepare>
+    <finish/>
+    <permissions user="admin" password="" group="edirom" mode="rwxrwxr--"/>
+</meta>
