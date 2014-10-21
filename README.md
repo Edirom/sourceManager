@@ -8,7 +8,7 @@ Version 0.1 alpha
 
 * add files
 * delete files
-* open files in Exide for editing
+* open files in eXide for editing
 
 License
 -------
