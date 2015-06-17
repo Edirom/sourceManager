@@ -10,6 +10,19 @@ Version 0.1 alpha
 * delete files
 * open files in eXide for editing
 
+Setup / Miscellaneous
+---------------------
+
+* expects collection for generated and listed MEI files in eXist-db at:
+`/db/edirom_data`
+
+this may be changed in the following files
+- for file creation:
+- `modules/edirom_createSource.xql` Line 50 `declare variable $sourceCollectionPath := 'xmldb:exist:///db/edirom_data/';`
+
+- for file list:
+- `modules/edirom_getFileList.xql` Line 98 `local:ls('xmldb:exist:///db/edirom_data')`
+
 License
 -------
 
