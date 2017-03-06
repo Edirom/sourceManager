@@ -146,7 +146,7 @@ function deleteItem(filename){
   });
 }
 
-//declare function to open submitted filename un eXide editor
+//declare function to open submitted filename in eXide editor
 function openEditor(filename){
   //TODO: parametrise host url
   var url = 'http://localhost:8080/exist/apps/eXide/index.html?open=/db/edirom_data/'+filename;
