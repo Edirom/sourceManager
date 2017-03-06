@@ -72,6 +72,8 @@ function getFileList(){
                       $('<td class="file-controls">').append(
                         //info icon to call getFileDetails function
                         $('<span title="show details" class="info glyphicon glyphicon-info-sign">'),
+                        //zones icon to open current source in e-sic
+                         $('<span title="zones" class="zones glyphicon glyphicon-th">'),
                          //edit icon to open current source in editor
                          $('<span title="edit" class="edit glyphicon glyphicon-edit">'),
                          //trash icon for deleting the file from the database
@@ -96,6 +98,12 @@ function getFileList(){
         $('span.trash').bind("click", function(event) {
           //calling deleteItem function
           deleteItem($(this).closest('tr')[0].id);
+        });
+        
+        //bind click event to grid icons
+        $('span.zones').bind("click", function(event) {
+          //calling openMeasureEditor function
+          openMeasureEditor($(this).closest('tr')[0].id);
         });
         
         //bind click event to edit icons
@@ -150,5 +158,12 @@ function deleteItem(filename){
 function openEditor(filename){
   //TODO: parametrise host url
   var url = 'http://localhost:8080/exist/apps/eXide/index.html?open=/db/edirom_data/'+filename;
+}
+
+//declare function to open submitted filename in e-sic
+function openMeasureEditor(filename){
+  //TODO: parametrise host url
+  //var url = 'http://localhost:8080/exist/apps/edirom/sourceImageCartographer/index.html?uri=/apps/bazga/musicSources/'+filename;
+  var url = 'http://localhost:8080/exist/apps/edirom/sourceImageCartographer/tools/source/index.xql?uri=/apps/bazga/musicSources/'+filename;
   window.open(url, '_blank');
 }
