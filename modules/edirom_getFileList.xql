@@ -35,6 +35,8 @@ declare namespace local = "htp://www.edirom.de/ns";
 declare namespace mei = "http://www.music-encoding.org/ns/mei";
 declare namespace functx = "http://www.functx.com";
 
+declare variable $uri := request:get-parameter('uri','xmldb:exist:///apps/bazga/works');
+
 (: Switch to JSON serialization :)
 declare option output:method "json";
 declare option output:media-type "text/javascript";
@@ -115,5 +117,5 @@ declare function local:ls($collection as xs:string) as element()* {
 
 (: return collection index :)
 <collection>{
-local:ls('xmldb:exist:///db/edirom_data')
+local:ls($uri)
 }</collection>

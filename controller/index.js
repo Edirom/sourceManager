@@ -21,12 +21,34 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+var QueryString = function () {
+  // This function is anonymous, is executed immediately and 
+  // the return value is assigned to QueryString!
+  var query_string = {};
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+        // If first entry with this name
+    if (typeof query_string[pair[0]] === "undefined") {
+      query_string[pair[0]] = decodeURIComponent(pair[1]);
+        // If second entry with this name
+    } else if (typeof query_string[pair[0]] === "string") {
+      var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+      query_string[pair[0]] = arr;
+        // If third or later entry with this name
+    } else {
+      query_string[pair[0]].push(decodeURIComponent(pair[1]));
+    }
+  } 
+  return query_string;
+}();
 
 // bind document ready function to
 $(document).ready(function () {
   
   //get the list of resources in eXist db/edirom-data/
-  getFileList();
+  getFileList(QueryString.uri);
   
   //bind cleck event to add+ button
   $('#newItem').bind("click", function() {
@@ -51,10 +73,13 @@ $(document).ready(function () {
 });
 
 //declare function to get file list content form eXist-db via ajax.get
-function getFileList(){
+function getFileList(uri){
   $.ajax({
     type: "GET",
     url: "modules/edirom_getFileList.xql",
+    data: {
+        'uri': uri
+    },
     dataType: 'json',
     success: function(msg){
       $(function(){
