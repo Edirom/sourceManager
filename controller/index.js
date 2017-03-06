@@ -158,6 +158,7 @@ function deleteItem(filename){
 function openEditor(filename){
   //TODO: parametrise host url
   var url = 'http://localhost:8080/exist/apps/eXide/index.html?open=/db/edirom_data/'+filename;
+  window.open(url, '_blank');
 }
 
 //declare function to open submitted filename in e-sic
