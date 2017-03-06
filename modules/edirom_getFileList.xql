@@ -49,14 +49,34 @@ declare function functx:pad-string-to-length( $stringToPad as xs:string? ,
       ($stringToPad, for $i in (1 to $length) return $padChar),''),1,$length)
 };
 
+declare function functx:pad-integer-to-length( $integerToPad as xs:anyAtomicType? ,
+    $length as xs:integer )  as xs:string {
+
+   if ($length < string-length(string($integerToPad)))
+   then error(xs:QName('functx:Integer_Longer_Than_Length'))
+   else concat
+         (functx:repeat-string(
+            '0',$length - string-length(string($integerToPad))),
+          string($integerToPad))
+} ;
+
+declare function functx:repeat-string
+  ( $stringToRepeat as xs:string? ,
+    $count as xs:integer )  as xs:string {
+
+   string-join((for $i in 1 to $count return $stringToRepeat),
+                        '')
+ } ;
+
+
 (: function for returning a prettified version of file creation date :)
 declare function local:datePrettyPrint($dateTime){
 
 let $year := fn:year-from-dateTime($dateTime),
-		$month := functx:pad-string-to-length(fn:string(fn:month-from-dateTime($dateTime)),'0',2),
-		$day := functx:pad-string-to-length(fn:string(fn:day-from-dateTime($dateTime)),'0',2),
-		$hours := functx:pad-string-to-length(fn:string(fn:hours-from-dateTime($dateTime)),'0',2),
-		$minutes := functx:pad-string-to-length(fn:string(fn:minutes-from-dateTime($dateTime)),'0',2)
+		$month := functx:pad-integer-to-length(fn:number(fn:month-from-dateTime($dateTime)),2),
+		$day := functx:pad-integer-to-length(fn:number(fn:day-from-dateTime($dateTime)),2),
+		$hours := functx:pad-integer-to-length(fn:number(fn:hours-from-dateTime($dateTime)),2),
+		$minutes := functx:pad-integer-to-length(fn:minutes-from-dateTime($dateTime),2)
 return
 	concat($year,'-',$month,'-',$day,' ',$hours,':',$minutes)
 
