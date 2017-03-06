@@ -80,7 +80,7 @@ function getFileList(){
                   //append row to the file list
                   ).attr('id',item.name).appendTo('#ediromFileList');
           });
-        };
+        }
         
         //bind click event to info icons
         $('span.info').bind("click", function() {
@@ -110,13 +110,13 @@ function getFileList(){
       console.log("getFileList failure");
     }
   });
-};
+}
 
 //declare function to get file details by clicking on info icon in file list
 function getFileDetails(file){
   //TODO: create function logic
   console.log('getFileDetails called for: ' + file);
-};
+}
 
 //delcare function to refresh file list
 function refreshFileList(){
@@ -126,7 +126,7 @@ function refreshFileList(){
   });
   //repopulate file list
   getFileList();
-};
+}
 
 //declare function to delete file form database
 function deleteItem(filename){
@@ -144,11 +144,11 @@ function deleteItem(filename){
       console.log("deleteItem failed for: " + filename);
     }
   });
-};
+}
 
 //declare function to open submitted filename un eXide editor
 function openEditor(filename){
   //TODO: parametrise host url
   var url = 'http://localhost:8080/exist/apps/eXide/index.html?open=/db/edirom_data/'+filename;
   window.open(url, '_blank');
-};
+}
