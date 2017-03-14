@@ -67,7 +67,7 @@ declare variable $appInfo := element {fn:QName('http://www.music-encoding.org/ns
   }
 };
 
-(: declare change element for Edirom Source MAnager for insertion in created file :)
+(: declare change element for Edirom Source Manager for insertion in created file :)
 declare variable $change := element {fn:QName('http://www.music-encoding.org/ns/mei','change')} {
   attribute n {count($meiTemplate//mei:revisionDesc/mei:change)+1},
   element respStmt {
