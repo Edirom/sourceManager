@@ -50,6 +50,9 @@ $(document).ready(function () {
   //get the list of resources in eXist db/edirom-data/
   getFileList(QueryString.uri);
   
+  //add uri to input_collection
+  $('#input_collection').val(QueryString.uri)
+  
   //bind cleck event to add+ button
   $('#newItem').bind("click", function() {
     $('#addItemDetails').toggle(true);
