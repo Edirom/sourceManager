@@ -76,12 +76,12 @@ $(document).ready(function () {
 });
 
 //declare function to get file list content form eXist-db via ajax.get
-function getFileList(uri){
+function getFileList(collectionUri){
   $.ajax({
     type: "GET",
     url: "modules/edirom_getFileList.xql",
     data: {
-        'uri': uri
+        'uri': collectionUri
     },
     dataType: 'json',
     success: function(msg){
@@ -119,25 +119,25 @@ function getFileList(uri){
           //add class active to this row
           $(this).closest('tr').toggleClass('active', true);
           //call function getFileDetails
-          getFileDetails($(this).closest('tr')[0].id);
+          getFileDetails($(this).closest('tr')[0].id, QueryString.uri);
         });
         
         //bind click event to trash icons
         $('span.trash').bind("click", function(event) {
           //calling deleteItem function
-          deleteItem($(this).closest('tr')[0].id);
+          deleteItem($(this).closest('tr')[0].id, collectionUri);
         });
         
         //bind click event to grid icons
         $('span.zones').bind("click", function(event) {
           //calling openMeasureEditor function
-          openMeasureEditor($(this).closest('tr')[0].id);
+          openMeasureEditor($(this).closest('tr')[0].id,collectionUri);
         });
         
         //bind click event to edit icons
         $('span.edit').bind("click", function() {
           //call function openEditor
-          openEditor($(this).closest('tr')[0].id);
+          openEditor($(this).closest('tr')[0].id, QueryString.uri);
         });
       })
     },
@@ -149,50 +149,54 @@ function getFileList(uri){
 }
 
 //declare function to get file details by clicking on info icon in file list
-function getFileDetails(file){
+function getFileDetails(filename, collection){
   //TODO: create function logic
-  console.log('getFileDetails called for: ' + file);
+  console.log('getFileDetails called for: ' + filename + ' in collection: ' + collection);
 }
 
 //delcare function to refresh file list
-function refreshFileList(){
+function refreshFileList(collection){
   //delete existing table rows
   $.each($('#ediromFileList tbody tr'), function(i, item){
     $(item).remove();
   });
   //repopulate file list
-  getFileList();
+  console.log(collection);
+  getFileList(collection);
 }
 
 //declare function to delete file form database
-function deleteItem(filename){
+function deleteItem(filename, collection){
   //declare corresponding ajax.post submitting to edirom_deleteItem.xql
   $.ajax({
     type: "POST",
     url: "modules/edirom_deleteItem.xql",
-    data: {'filename': filename},
+    data: {
+        'filename': filename,
+        'collection':collection
+    },
     success: function(){
       //refresh file list
-      refreshFileList();
+      refreshFileList(QueryString.uri);
     },
     error: function() {
       //in case of error log to console
-      console.log("deleteItem failed for: " + filename);
+      console.log("deleteItem failed for: " + filename + " in collection: " + collection);
     }
   });
 }
 
 //declare function to open submitted filename in eXide editor
-function openEditor(filename){
+function openEditor(filename, collection){
   //TODO: parametrise host url
-  var url = 'http://localhost:8080/exist/apps/eXide/index.html?open=/db/edirom_data/'+filename;
+  var url = 'http://localhost:8080/exist/apps/eXide/index.html?open='+collection+filename;
   window.open(url, '_blank');
 }
 
 //declare function to open submitted filename in e-sic
-function openMeasureEditor(filename){
+function openMeasureEditor(filename, collection){
   //TODO: parametrise host url
   //var url = 'http://localhost:8080/exist/apps/edirom/sourceImageCartographer/index.html?uri=/apps/bazga/musicSources/'+filename;
-  var url = 'http://localhost:8080/exist/apps/edirom/sourceImageCartographer/tools/source/index.xql?uri=/apps/bazga/musicSources/'+filename;
+  var url = 'http://localhost:8080/exist/apps/edirom/sourceImageCartographer/tools/source/index.xql?uri='+collection+filename;
   window.open(url, '_blank');
 }

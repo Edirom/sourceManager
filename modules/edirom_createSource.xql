@@ -32,6 +32,7 @@ import module namespace config="http://www.edirom.de/sourceManager/config" at "c
 
 (: declare namespaces :)
 declare namespace local = "htp://www.edirom.de/ns";
+declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare namespace mei = "http://www.music-encoding.org/ns/mei";
 declare namespace expath="http://expath.org/ns/pkg";
 declare namespace repo="http://exist-db.org/xquery/repo";
@@ -47,13 +48,16 @@ declare variable $sourceResp := request:get-parameter('sourceResp', 'composer');
 declare variable $sourceResp_v := request:get-parameter('sourceResp_v', 'source_resp_name');
 
 (: functional variables :)
-declare variable $sourceCollectionPath := 'xmldb:exist:///db/edirom_data/';
+declare variable $sourceCollectionPath := request:get-parameter('collection','xmldb:exist:///db/edirom_data/');
 declare variable $id := request:get-parameter('filename', 'id');
 declare variable $expath-descriptor := config:expath-descriptor();
 
 (: load MEI template file :)
 (: TODO: make variable a cache of the doc not a reference :)
 declare variable $meiTemplate := fn:doc('xmldb:exist:///db/apps/ediromSourceManager/templates/newSource.xml');
+
+declare option output:method "text";
+declare option output:media-type "text";
 
 (: declare the appInfo element for inserting into the created MEI file :)
 declare variable $appInfo := element {fn:QName('http://www.music-encoding.org/ns/mei','appInfo')} {
@@ -120,5 +124,7 @@ declare function local:return(){
 (:if(fn:doc-available(concat($sourceCollectionPath,$filename)))
 then(fn:error(fileExists,concat('a file with the spcified filename (',$filename,') already exists ')))
 else( :)
-  local:return()
+  let $return := local:return()
+  return
+      'created ' || string(fn:concat($sourceCollectionPath,$filename))
 (:):)

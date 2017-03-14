@@ -37,7 +37,7 @@ $(document).ready(function () {
       data: $('#form_createSource').serialize(),
       dataType: 'text',
       success: function(){
-        refreshFileList();
+        refreshFileList(QueryString.uri);
       },
       //on complete
       complete: function(){
