@@ -27,7 +27,7 @@ this may be changed in the following files
 - `modules/edirom_getFileList.xql` Line 98 `local:ls('xmldb:exist:///db/edirom_data')`
  
 - for file deltion in:
-- `edirom_deleteItem.xql` Line 38 `eclare variable $collection := "xmldb:exist:///db/edirom_data";`
+- `edirom_deleteItem.xql` Line 38 `declare variable $collection := "xmldb:exist:///db/edirom_data";`
 
 
 License
