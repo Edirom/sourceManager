@@ -1,7 +1,7 @@
 Edirom Source Manager (edirom-SoMa)
 ======
 
-eXist-db application-package for managing MEI files for Edirom Online. Supports template-based creation, deletion, and edition via eXide.
+eXist-db application-package for managing MEI files for Edirom Online. Supports template-based creation, deletion, and editing via eXide.
 
 Version 0.1 alpha
 -----------------
