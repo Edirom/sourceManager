@@ -2,7 +2,7 @@ Edirom Source Manager (edirom-SoMa)
 ======
 
 >Der Zellkörper oder das Soma ist der formgebende Rumpf einer Zelle ohne ihre Zellfortsätze […].
-<br/>– [Zellkörper](http://flexikon.doccheck.com/de/Zellk%C3%B6rper), DocCheck Flexikon ([Liste of Authors](http://flexikon.doccheck.com/Spezial:Artikel_Autoren/Zellkörper), licensed under [CC BY-NC-SA 3.0 Unported](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.de), acessed 2017-03-20)
+<br/>– [Zellkörper](http://flexikon.doccheck.com/de/Zellk%C3%B6rper), DocCheck Flexikon ([List of Authors](http://flexikon.doccheck.com/Spezial:Artikel_Autoren/Zellkörper), licensed under [CC BY-NC-SA 3.0 Unported](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.de), acessed 2017-03-20)
 
 eXist-db application-package for managing MEI files for Edirom Online. Supports template-based creation, deletion, and editing via eXide.
 
